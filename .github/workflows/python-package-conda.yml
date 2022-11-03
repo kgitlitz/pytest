@@ -2,6 +2,10 @@ name: Python Package using Conda
 
 on: [push]
 
+env:
+  AWS_ACCESS_KEY: 'test'
+  AWS_SECRET_ACCESS_KEY: 'test'
+  AWS_DEFAULT_REGION: 'us-east-1'
 jobs:
   build-linux:
     runs-on: ubuntu-latest
@@ -9,12 +13,6 @@ jobs:
       max-parallel: 5
 
     steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-region: us-east-1
-        aws_access_key_id: test
-        aws_secret_access_key: test
     - uses: actions/checkout@v3
     - name: Set up Python 3.7
       uses: actions/setup-python@v3
