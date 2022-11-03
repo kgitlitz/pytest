@@ -10,6 +10,8 @@ test_bucket = "kzy334x6"
 test_file = "test.txt"
 object_name = "33hellox"
 
+profile = "default"
+
 @pytest.fixture(scope='function')
 def aws_credentials():
     """Mocked AWS Credentials for moto."""
@@ -22,10 +24,10 @@ def aws_credentials():
 @mock_s3 #decorate for mocking
 def test_s3(): #called by pytest 
 
-	s3_create_bucket("localstack", test_bucket)
+	s3_create_bucket(profile, test_bucket)
 	
 	try:
-		response = s3_upload("localstack", test_file, test_bucket, object_name)
+		response = s3_upload(profile, test_file, test_bucket, object_name)
 		print(f'Upload Response: {response}')
 	except ClientError as e:
 		print("error: ", e)
@@ -35,20 +37,6 @@ def test_s3(): #called by pytest
 
 	return True
 
-def vtest_s3_aws():
-
-	s3_create_bucket('programmer', test_bucket)
-	
-	try:
-		response = s3_upload('programmer', test_file, test_bucket, object_name)
-		print(f'Upload Response: {response}')
-	except ClientError as e:
-		print("error: ", e)
-		return False
-
-	s3_download('programmer', object_name, test_bucket, "test2.txt")
-
-	return True
 
 def test_noop():
 	print('no operation')
