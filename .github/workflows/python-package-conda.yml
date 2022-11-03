@@ -2,6 +2,11 @@ name: Python Package using Conda
 
 on: [push]
 
+env:
+  AWS_PROFILE: localstack
+  AWS_ACCESS_KEY: test
+  AWS_SECRET_ACCESS_KEY: test
+  AWS_DEFAULT_REGION: us-east-1
 jobs:
   build-linux:
     runs-on: ubuntu-latest
