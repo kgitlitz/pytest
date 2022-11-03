@@ -22,10 +22,10 @@ def aws_credentials():
 @mock_s3 #decorate for mocking
 def test_s3(): #called by pytest 
 
-	s3_create_bucket(aws_credentials, test_bucket)
+	s3_create_bucket("localstack", test_bucket)
 	
 	try:
-		response = s3_upload(aws_credentials, test_file, test_bucket, object_name)
+		response = s3_upload("localstack", test_file, test_bucket, object_name)
 		print(f'Upload Response: {response}')
 	except ClientError as e:
 		print("error: ", e)
