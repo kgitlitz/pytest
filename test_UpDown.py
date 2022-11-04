@@ -18,7 +18,7 @@ def test_s3(): #called by pytest
 	s3_create_bucket(client, test_bucket)
 	
 	try:
-		#response = s3_upload(client, test_file, test_bucket, object_name)
+		response = s3_upload(client, test_file, test_bucket, object_name)
 		print(f'Upload Response: {response}')
 	except ClientError as e:
 		print("error: ", e)
@@ -33,4 +33,3 @@ def test_noop():
 	print('no operation')
 	return True
 
-test_s3()

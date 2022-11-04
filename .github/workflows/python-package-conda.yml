@@ -2,16 +2,12 @@ name: Python Package using Conda
 
 on: [push]
 
-env:
-  AWS_ACCESS_KEY: 'test'
-  AWS_SECRET_ACCESS_KEY: 'test'
-  AWS_DEFAULT_REGION: 'us-east-1'
+
 jobs:
   build-linux:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 5
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.7
