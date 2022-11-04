@@ -34,7 +34,6 @@ def s3_download(client, object_name, bucket, file_out):
     try:
         response = client.download_file(bucket, object_name, file_out)
 
-        print(f'Download Response: {response}')
     except ClientError as e:
         print(e)
         return False
