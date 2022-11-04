@@ -29,7 +29,7 @@ def s3_upload(client, file_name, bucket, object_name=None):
     
     return True
 
-def s3_download(profile, object_name, bucket, file_out):
+def s3_download(client, object_name, bucket, file_out):
     
     try:
         response = client.download_file(bucket, object_name, file_out)
